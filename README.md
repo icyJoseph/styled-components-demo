@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Styled Components
 
-## Available Scripts
+> Reusability
 
-In the project directory, you can run:
+Points:
 
-### `npm start`
+# The problem sharing components which use LESS/SASS
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+People must include LESS/SASS to their tool chain in order to gain any leverage.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Even those who expose a surface
 
-### `npm test`
+Bulma has predefined variables, and one can override them. Though, as part of the tool chain.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> One must setup a LESS/SASS toolchain
 
-### `npm run build`
+# CSS in JS
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The greatest ~~most controversial~~ approach.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+# Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Hiding implementation details of the designer
 
-### `npm run eject`
+```jsx
+<Button className="btn"/>
+<Button className="btn btn-nice"/>
+<Button type="link" className="btn btn-beautiful"/>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As a consumer of the component, we do not care about the classes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+<Button/>
+<Button nice/>
+<Button beautiful link>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# React at its best
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```jsx
+const Flex = ({ children }) => <div className="flex">{children}</div>;
+```
 
-## Learn More
+Consumers do not care about how we name it, or how flex is ultimately applied
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```jsx
+<Flex>
+  <span>Hello</span>
+</Flex>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Moving styling to the component label
 
-### Code Splitting
+# Styles as JS Objects - no no
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Bring CSS into JS
 
-### Analyzing the Bundle Size
+# A first proposal
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Syntax Sugar - Tagged Templated Literals
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Functions for conditional styling

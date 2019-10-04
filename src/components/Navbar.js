@@ -32,8 +32,8 @@ export default ({ children, [sub]: current }) => {
               </Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/themeing">
-                Themeing
+              <Link className="nav-link" to="/theming">
+                Theming
               </Link>
             </NavItem>
           </Nav>

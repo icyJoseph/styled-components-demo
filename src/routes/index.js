@@ -3,7 +3,7 @@ import { Router, Redirect } from "@reach/router";
 
 import Problem from "routes/problem";
 import Overrides from "routes/overrides";
-import Themeing from "routes/themeing";
+import Theming from "routes/theming";
 
 import NavBar from "components/Navbar";
 
@@ -13,7 +13,7 @@ export default () => (
     <NavBar path="/">
       <Problem path="problem" />
       <Overrides path="overrides" />
-      <Themeing path="themeing" />
+      <Theming path="theming" />
     </NavBar>
   </Router>
 );

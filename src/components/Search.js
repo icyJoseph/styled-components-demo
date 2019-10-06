@@ -8,9 +8,9 @@ const StyledInputGroup = styled(InputGroup)`
   margin: 0 auto;
 
   > div > span {
-    background: transparent;
+    background: ${({ theme }) => theme[theme.name]};
     border: none;
-    border-bottom: 1px solid #ced4da;
+    border-bottom: 1px solid #7b8a8b;
     border-radius: 0;
   }
 `;
@@ -18,10 +18,14 @@ const StyledInputGroup = styled(InputGroup)`
 const StyledInput = styled(Input)`
   border: none;
   border-bottom: 1px solid #7b8a8b;
+  background: ${({ theme }) => theme[theme.name]};
+  color: ${({ theme }) => theme.fontColor};
   border-radius: 0;
 
   &:focus,
   .form-control:focus {
+    color: ${({ theme }) => theme.fontColor};
+    background: ${({ theme }) => theme[theme.name]};
     outline: none;
     box-shadow: none;
   }

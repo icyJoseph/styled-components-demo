@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { BootstrapCard } from "components/BootstrapCard";
-import { BulmaCard } from "components/BulmaCard";
 
-import { Layout } from "components/Layout";
-
-import useGitHub from "hooks/github";
+import BootstrapCard from "components/BootstrapCard";
+import BulmaCard from "components/BulmaCard";
+import RSCard from "components/ReactStrapCard";
+import RBCoCard from "components/RBCoCard";
+import Layout from "components/Layout";
 import Search from "components/Search";
 
-export const Problem = () => {
+import useGitHub from "hooks/github";
+
+export const Cards = () => {
   const [username, changeUsername] = useState("icyJoseph");
   const { data } = useGitHub({ username });
 
@@ -21,6 +23,7 @@ export const Problem = () => {
     name,
     followers
   } = data;
+
   const userProps = {
     avatar,
     profile,
@@ -36,18 +39,22 @@ export const Problem = () => {
       <Search handleSubmit={changeUsername} />
       <Layout>
         <Layout.Element>
-          <div>
-            <BootstrapCard {...userProps} />
-          </div>
+          <BootstrapCard {...userProps} />
         </Layout.Element>
         <Layout.Element>
-          <div>
-            <BulmaCard {...userProps} />
-          </div>
+          <BulmaCard {...userProps} />
+        </Layout.Element>
+      </Layout>
+      <Layout reverse>
+        <Layout.Element>
+          <RSCard {...userProps} />
+        </Layout.Element>
+        <Layout.Element>
+          <RBCoCard {...userProps} />
         </Layout.Element>
       </Layout>
     </>
   );
 };
 
-export default Problem;
+export default Cards;

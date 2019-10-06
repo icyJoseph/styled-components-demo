@@ -18,9 +18,16 @@ export const BulmaCard = ({ avatar, username, profile, bio, name }) => (
       <div className="content">{bio}</div>
     </div>
     <footer className="card-footer">
-      <a href={profile} className="card-footer-item">
+      <a
+        className="card-footer-item"
+        href={profile}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         To Profile
       </a>
     </footer>
   </div>
 );
+
+export default BulmaCard;

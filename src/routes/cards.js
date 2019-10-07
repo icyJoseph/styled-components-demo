@@ -21,7 +21,7 @@ export const Cards = () => {
     <>
       <Search handleSubmit={changeUsername} />
       <Tabs>
-        <Layout reverse name="Bootstrap">
+        <Layout reverse name="with classNames">
           <Layout.Element>
             <BootstrapCard {...data} />
           </Layout.Element>
@@ -29,7 +29,7 @@ export const Cards = () => {
             <BulmaCard {...data} />
           </Layout.Element>
         </Layout>
-        <Layout name="Bulma">
+        <Layout name="From npm">
           <Layout.Element>
             <RSCard {...data} />
           </Layout.Element>

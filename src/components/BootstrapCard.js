@@ -1,7 +1,7 @@
 import React from "react";
 
 export const BootstrapCard = ({ avatar, username, bio, profile, name }) => (
-  <div className="card" style={{ width: "18rem" }}>
+  <div className="card" style={{ width: "14rem" }}>
     <img src={avatar} className="card-img-top" alt={username} />
     <div className="card-body">
       <h5 className="card-title">{name}</h5>

@@ -11,7 +11,7 @@ import {
 
 const RSCard = ({ avatar, username, bio, profile, name }) => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "14rem" }}>
       <CardImg top src={avatar} alt={username} />
       <CardBody>
         <CardTitle>{name}</CardTitle>

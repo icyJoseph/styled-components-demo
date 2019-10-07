@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "node-sass": "^4.12.0",
     "react": "^16.10.1",
     "react-bulma-components": "^2.3.0",
     "react-dom": "^16.10.1",

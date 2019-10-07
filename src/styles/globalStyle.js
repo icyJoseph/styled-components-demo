@@ -6,4 +6,8 @@ export default createGlobalStyle`
         color: ${({ theme }) => theme.fontColor}
     }
 
+    body::-webkit-scrollbar {
+        display:none;
+    }
+
 `;

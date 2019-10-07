@@ -5,7 +5,8 @@ import styled from "styled-components";
 
 const StyledInputGroup = styled(InputGroup)`
   width: 80%;
-  margin: 0 auto;
+  margin: 2em auto;
+
 
   > div > span {
     background: ${({ theme }) => theme[theme.name]};

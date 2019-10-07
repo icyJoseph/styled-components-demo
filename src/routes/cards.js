@@ -5,6 +5,8 @@ import BulmaCard from "components/BulmaCard";
 import RSCard from "components/ReactStrapCard";
 import RBCoCard from "components/RBCoCard";
 
+import { StyledRSCard } from "components/StyledCards";
+
 import Layout from "components/Layout";
 import Search from "components/Search";
 import Tabs from "components/Tabs";
@@ -19,7 +21,7 @@ export const Cards = () => {
     <>
       <Search handleSubmit={changeUsername} />
       <Tabs>
-        <Layout name="Bootstrap">
+        <Layout reverse name="Bootstrap">
           <Layout.Element>
             <BootstrapCard {...data} />
           </Layout.Element>
@@ -27,9 +29,17 @@ export const Cards = () => {
             <BulmaCard {...data} />
           </Layout.Element>
         </Layout>
-        <Layout reverse name="Bulma">
+        <Layout name="Bulma">
           <Layout.Element>
             <RSCard {...data} />
+          </Layout.Element>
+          <Layout.Element>
+            <RBCoCard {...data} />
+          </Layout.Element>
+        </Layout>
+        <Layout name="Styled">
+          <Layout.Element>
+            <StyledRSCard {...data} />
           </Layout.Element>
           <Layout.Element>
             <RBCoCard {...data} />

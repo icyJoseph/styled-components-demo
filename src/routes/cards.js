@@ -13,27 +13,10 @@ export const Cards = () => {
   const [username, changeUsername] = useState("icyJoseph");
   const { data } = useGitHub({ username });
 
-  const {
-    avatar_url: avatar,
-    html_url: profile,
-    login,
-    bio,
-    company,
-    location,
-    name,
-    followers
-  } = data;
-
   const userProps = {
-    avatar,
-    profile,
-    username: login,
-    bio,
-    company,
-    location,
-    name,
-    followers
+    ...data
   };
+  
   return (
     <>
       <Search handleSubmit={changeUsername} />

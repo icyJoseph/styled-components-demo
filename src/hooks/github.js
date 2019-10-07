@@ -1,14 +1,36 @@
 import { useState, useEffect } from "react";
 
+function transform({
+  avatar_url: avatar,
+  html_url: profile,
+  login,
+  bio,
+  company,
+  location,
+  name,
+  followers
+}) {
+  return {
+    avatar,
+    profile,
+    username: login,
+    bio,
+    company,
+    location,
+    name,
+    followers
+  };
+}
+
 export function useGitHub({ username }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const { login } = data;
-    const existing = localStorage.getItem(login);
-    if (!existing && login) {
-      localStorage.setItem(login, JSON.stringify(data));
+    const { username } = data;
+    const existing = localStorage.getItem(username);
+    if (!existing && username) {
+      localStorage.setItem(username, JSON.stringify(data));
     }
   }, [data]);
 
@@ -24,6 +46,7 @@ export function useGitHub({ username }) {
 
       fetch(`https://api.github.com/users/${username}`)
         .then(res => res.json())
+        .then(transform)
         .then(data => {
           if (cancel) return;
           setData(data);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ButtonGroup, Button } from "reactstrap";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ const ButtonGroupWrap = styled.div`
 
   > div button {
     background: ${({ theme }) => theme.grayDark};
+    min-width: 8em;
   }
 
   > div button.selected {
@@ -15,8 +16,18 @@ const ButtonGroupWrap = styled.div`
   }
 `;
 
+const SELECTED_TAB = "selectedTab";
+const getSavedTab = () => parseInt(localStorage.getItem(SELECTED_TAB));
+
 export function Tabs({ children }) {
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(() => getSavedTab() || 0);
+
+  useEffect(() => {
+    const currentlySaved = localStorage.getItem(selectedTab);
+    if (currentlySaved !== selectedTab) {
+      localStorage.setItem(SELECTED_TAB, selectedTab);
+    }
+  }, [selectedTab]);
 
   const buttons = React.Children.toArray(children).map(
     ({ props: { name } }, index) => (

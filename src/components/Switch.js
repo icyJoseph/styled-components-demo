@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const SwitchWrap = styled.div`
   text-align: center;
+  font-size: 10px;
 
   .react-switch-checkbox {
     height: 0;
@@ -36,6 +37,11 @@ const SwitchWrap = styled.div`
     box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
   }
 
+  .react-switch-label-name {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
   .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
     left: calc(100% - 2px);
     transform: translateX(-100%);
@@ -59,7 +65,7 @@ export const Switch = ({ id, name, label, isOn, handleToggle }) => {
       <label className="react-switch-label" htmlFor={id}>
         <span className="react-switch-button"></span>
       </label>
-      <span>{label}</span>
+      <span className="react-switch-label-name">{label}</span>
     </SwitchWrap>
   );
 };

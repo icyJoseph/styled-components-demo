@@ -9,7 +9,7 @@ import Switch from "components/Switch";
 
 export const Theming = ({ theme }) => {
   const { mode, toggle } = useChangeTheme();
-  //   console.log(theme);
+  console.log(mode, theme);
   return (
     <Layout>
       <Switch

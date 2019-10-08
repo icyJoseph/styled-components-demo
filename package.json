@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:slides": "mdx-deck deck.mdx",
+    "build:slides": "mdx-deck build deck.mdx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +34,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@mdx-deck/export": "2.3.2",
+    "mdx-deck": "2.3.2",
+    "react-syntax-highlighter": "^11.0.2"
   }
 }

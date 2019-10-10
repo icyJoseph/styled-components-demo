@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 import { Prism } from "react-syntax-highlighter";
 import xonokai from "react-syntax-highlighter/dist/styles/prism/xonokai";
 

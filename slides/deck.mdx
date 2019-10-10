@@ -1,0 +1,241 @@
+export { condensed as theme } from "mdx-deck/themes";
+import { Appear, Notes, Image } from "mdx-deck";
+import { Horizontal } from "mdx-deck/layouts";
+import Renderer from "./renderToString";
+import { Title, Wrapper } from "./components";
+import { TitleWrapper } from "./components/strings";
+
+# Styled Components
+
+💅
+
+---
+
+HTML + CSS = The Web
+
+---
+
+But today JavaScript is huge!
+
+---
+
+<Image src="./assets/JavaScriptEverywhere.png" size="50% 80%" />
+
+---
+
+And we use functional programming
+
+`React`
+
+<ul>
+  <Appear>
+    <li>React Elements</li>
+    <li>
+      React Components
+      <div>
+        <code>props => React Element</code>
+      </div>
+    </li>
+  </Appear>
+</ul>
+
+---
+
+A React Element
+
+<Renderer code="<Button primary/>" language="jsx" />
+
+---
+
+## The situation
+
+We want to:
+
+- Share
+- Reuse
+- Tweak
+- Theme
+
+---
+
+So we have to:
+
+- Include the whole stylesheet
+- Have users reload the page
+- Write a lot of `CSS` to account for as many themes as you want
+- Learn the implementation details of the stylesheet
+- Include LESS/SASS in your tool chain
+
+---
+
+<Image src="./assets/linux.jpg" size="50% 50%" />
+
+---
+
+A typical React project uses:
+
+- Webpack
+- EsLint/Prettier
+- Babel
+
+Why? [Because](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=JYWwDg9gTgLgBAJQKYEMDG8BmUIjgcilQ3wG4AoctAGxQGc64BhCAVwDt4kAPGJdgCaNk6GADoW4CO37wA3uThwAkHRgo-cALxw5cNG04AuOAEY4AX2WVlRQUigAKAJQLltpDFZR2cADwCwABuAHxyBhwwFn4A9IGh5MoW5BZAA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-0&prettier=false&targets=&version=7.6.3&externalPlugins=)
+
+<Appear>
+  <div>And also LESS/SASS?</div>
+  <div>How about no</div>
+</Appear>
+
+---
+
+A stylesheet is a map (Many -> Many)
+
+<Renderer code={`<div class="my-class">Hello World!</div>`} language="html" />
+
+<span>
+  How does <i>my-class</i> relate
+  <br />
+  to <i>div</i>, <i>span</i>, <i>h1</i>,
+  <br />
+  its children and grand-children?
+</span>
+
+---
+
+Bring in JavaScript
+
+[CSS in JS](https://2019.stateofcss.com/technologies/css-in-js/)
+
+---
+
+One word about React Dev's
+
+<img src="./assets/react.png" style={{ maxHeight: "500px" }} />
+
+---
+
+---
+
+## Styled Components
+
+CSS is awesome, and complete!
+
+- People know how to CSS!
+- Designers speak CSS
+
+JavaScripts objects as CSS?
+
+<Appear>
+  <span>🤢</span>
+</Appear>
+
+---
+
+### Initial Proposal
+
+These are not inline styles!
+
+<Renderer
+  code="const Comp = elem('div', 'color: #ff5757');"
+  language="javascript"
+/>
+
+---
+
+<span>
+  The second argument to `elem`
+  <br />
+  is injected to the DOM in a style tag.
+</span>
+
+Enables:
+
+<ul>
+  <Appear>
+    <li>Selectors</li>
+    <li>Media Queries</li>
+    <li>Pseudo-selectors</li>
+    <li>Actual CSS in JavaScript</li>
+  </Appear>
+</ul>
+
+---
+
+### Syntax Sugar
+
+<Renderer
+  code={`const Comp = elem('div')\`
+    color: #ff5757
+  \`;`}
+  language="javascript"
+/>
+
+---
+
+# Tagged Templates
+
+Back ticks!``
+
+[Demo](https://repl.it/repls/FelineHuskyProject)
+
+<Appear>
+  <span>
+    Take away: expressions passed to
+    <br />
+    a tagged function
+    <br />
+    are accesible by said tagged function
+  </span>
+</Appear>
+
+---
+
+<span>
+  Tagged Templates enable us to pass
+  <br />
+  functions for conditional styling
+</span>
+
+🤯
+
+---
+
+### Not the final syntax yet
+
+<Renderer
+  code={`const Comp = elem('div')\`
+  display: \${props => props.isOpen ? 'block' : 'none'};
+\`;`}
+  language="jsx"
+/>
+
+---
+
+No more mapping from styles and HTML elements
+
+---
+
+### Actual Syntax
+
+<Renderer code={TitleWrapper} language="jsx" />
+
+---
+
+<Wrapper>
+  <Title>Styled Components</Title>
+</Wrapper>
+
+---
+
+normalize
+reset
+globals
+
+---
+
+Theming
+
+---
+
+[iOS Dark Mode](https://tombrow.com/dark-mode-website-css)
+
+---

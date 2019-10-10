@@ -16,7 +16,7 @@ export const Theming = ({ theme }) => {
         id="theme"
         name="theme-switch"
         label={`${mode} - 💅`}
-        isOn={mode === LIGHT}
+        isOn={mode !== LIGHT}
         handleToggle={toggle}
       />
     </Layout>

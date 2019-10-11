@@ -2,4 +2,4 @@
 
 A brief talk and demo on Styled Components
 
-> Reusability
+> Ties the power of HTML + CSS into Styled Components

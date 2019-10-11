@@ -35,7 +35,7 @@ export default ({ children, [sub]: current }) => {
   return (
     <>
       <StyledNavbar expand="md">
-        <NavbarBrand href="/">Evolve + AdFenix</NavbarBrand>
+        <NavbarBrand href="/">AdFenix</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={open} navbar>
           <Nav className="ml-auto" navbar>

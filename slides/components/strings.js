@@ -61,7 +61,7 @@ export const containerString = `export const Container = styled.section\`
   }
 \`;`;
 
-export const themeProviderString = `<ThemeProvider theme={{ breakpoint: "600px" }}>
+export const themeProviderString = `<ThemeProvider theme={{ breakpoint: "800px" }}>
   <Container>Almost done</Container>
 </ThemeProvider>
 `;

@@ -1,9 +1,27 @@
 export { condensed as theme } from "mdx-deck/themes";
 import { Appear, Notes, Image } from "mdx-deck";
 import { Horizontal } from "mdx-deck/layouts";
+import { ThemeProvider } from "styled-components";
 import Renderer from "./renderToString";
-import { Title, Wrapper } from "./components";
-import { TitleWrapper } from "./components/strings";
+import { Title, Wrapper, Container, Themed } from "./components";
+import {
+  TitleWrapper,
+  themeProvider,
+  themeConsumer,
+  containerString,
+  themeProviderString,
+  globalStyleString,
+  usingGlobalStyleString,
+  cssStyleString,
+  keyframesPartialString,
+  targetingOtherString,
+  onlyStyledComponents,
+  firstCardComponent,
+  secondCardComponent,
+  thirdCardComponent,
+  fourthCardComponent,
+  cardSolution
+} from "./components/strings";
 
 # Styled Components
 
@@ -12,6 +30,8 @@ import { TitleWrapper } from "./components/strings";
 ---
 
 HTML + CSS = The Web
+
+[Languages which almost were CSS](https://eager.io/blog/the-languages-which-almost-were-css/)
 
 ---
 
@@ -47,7 +67,7 @@ A React Element
 
 ---
 
-## The situation
+## Styles
 
 We want to:
 
@@ -58,13 +78,17 @@ We want to:
 
 ---
 
-So we have to:
+- Normalize
+- Reset
+- Mixins
+  So we have to:
 
 - Include the whole stylesheet
 - Have users reload the page
 - Write a lot of `CSS` to account for as many themes as you want
 - Learn the implementation details of the stylesheet
 - Include LESS/SASS in your tool chain
+- Vendor Prefix all of our CSS
 
 ---
 
@@ -109,9 +133,7 @@ Bring in JavaScript
 
 One word about React Dev's
 
-<img src="./assets/react.png" style={{ maxHeight: "500px" }} />
-
----
+<img src="./assets/react.png" style={{ maxHeight: "450px" }} />
 
 ---
 
@@ -122,9 +144,8 @@ CSS is awesome, and complete!
 - People know how to CSS!
 - Designers speak CSS
 
-JavaScripts objects as CSS?
-
 <Appear>
+  <span>JavaScripts objects as CSS?</span>
   <span>🤢</span>
 </Appear>
 
@@ -210,7 +231,8 @@ Back ticks!``
 
 ---
 
-No more mapping from styles and HTML elements
+- No more mapping from styles and HTML elements
+- Auto prefixing (opt out)!
 
 ---
 
@@ -226,16 +248,199 @@ No more mapping from styles and HTML elements
 
 ---
 
-normalize
-reset
-globals
+### Features
+
+`styled` DOM Elements
+
+<Renderer
+  code={`const Comp = styled.h1\`
+  font-size: 4rem;
+\`;`}
+  language="jsx"
+/>
 
 ---
 
-Theming
+`styled` React Components
+
+<Renderer
+  code={`const Comp = styled(({ className, children }) => (
+  <div className={className}>{children}</div>
+))\`
+  display: flex;
+  flex: 1;
+\`;`}
+  language="jsx"
+/>
+
+<Renderer
+  code={`
+const Wrapped = ({ className, children }) => (
+  <div className={className}>{children}</div>
+);
+const Flex = styled(Wrapped)\`
+  display: flex;
+  flex: 1;
+\`;`}
+  language="jsx"
+/>
 
 ---
+
+<Renderer code={containerString} language="css" />
+
+<Renderer code="<Container>Almost done</Container>" language="jsx" />
+
+---
+
+<Container>Not many slides left</Container>
+
+---
+
+`ThemeProvider`
+
+- Wraps a React Node and injects the Theme object
+- Styled components have access to Theme
+- `withTheme` injects Theme as props to a React Component
+
+---
+
+Just like Redux
+
+<Renderer code={themeProvider} fontSize="1.25rem" />
+
+---
+
+Translation frameworks also use the Context API
+
+<Renderer code={themeConsumer} fontSize="1.25rem" />
+
+React has no way to bailout on Context updates
+
+---
+
+<Renderer code={themeProviderString} language="jsx" />
+
+---
+
+<ThemeProvider theme={{ breakpoint: "800px" }}>
+  <Container>Almost done</Container>
+</ThemeProvider>
+
+---
+
+`css`
+
+Used to share behavior! [Normalize, Reset](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
+
+<Renderer code={cssStyleString} language="css" />
+
+---
+
+`keyframes`
+
+<Renderer code={keyframesPartialString} language="css" fontSize="1.2rem" />
+
+---
+
+`createGlobalStyle`
+
+Top level injection, with automatic access to theme!
+
+<Renderer code={globalStyleString} language="css" />
+
+---
+
+And then...
+
+<Renderer code={usingGlobalStyleString} language="jsx" />
+
+---
+
+Themeing is important
 
 [iOS Dark Mode](https://tombrow.com/dark-mode-website-css)
 
 ---
+
+A unique thing
+
+- Targeting other elements...
+
+<Renderer code={targetingOtherString} language="css" fontSize="1.2rem" />
+
+---
+
+<span>
+  Only works for Styled Components,
+  <br />
+  targeting React Components produces errors.
+  <br />
+</span>
+
+<Renderer code={onlyStyledComponents} language="jsx" fontSize="1.2rem" />
+
+---
+
+## Scalable Styled components
+
+Designers ask for a Card Component.
+
+It should have: `title` and `text`.
+
+<Renderer code={firstCardComponent} language="jsx" fontSize="1.2rem" />
+
+---
+
+Product Owner asks to remove the title
+
+<Renderer code={secondCardComponent} language="jsx" fontSize="1.2rem" />
+
+---
+
+New UX trends - Title stand out 🙄
+
+<Renderer code={thirdCardComponent} language="jsx" fontSize="1.2rem" />
+
+---
+
+We need to show an Ad instead of title! 🤯
+
+<Renderer code={fourthCardComponent} language="jsx" fontSize="1.2rem" />
+
+---
+
+A solution
+
+<Renderer code={cardSolution} language="jsx" fontSize="1.1rem" />
+
+---
+
+- Start as close as the DOM nodes as possible
+
+- Don't abstract too early
+
+- Leverage the framework to avoid having to think
+
+---
+
+Left out:
+
+- Overrides
+- `styled.attrs(fn)`
+- Snapshot testing
+- Server Side Rendering
+- Input Sanitization
+- Performance and bundle sizes
+- Style Objects 🤢
+- [A more critical view](https://medium.com/valtech-design/why-i-dislike-existing-css-in-js-solutions-for-react-7b81786e0fd5)
+
+---
+
+## Demo?
+
+When you code CSS, you're writing abstract
+rules to take _unknown_ content and organize
+it in an _unknown_ medium. _That shit is hard._
+
+> Keith J Grant

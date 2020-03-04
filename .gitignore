@@ -26,3 +26,4 @@ yarn-error.log*
 slides/node_modules/
 slides/assets/
 slides/dist/
+slides/*.ico

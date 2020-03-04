@@ -1,5 +1,5 @@
 export { condensed as theme } from "mdx-deck/themes";
-import { Appear, Notes, Image } from "mdx-deck";
+import { Appear, Notes, Image, Head } from "mdx-deck";
 import { Horizontal } from "mdx-deck/layouts";
 import { ThemeProvider } from "styled-components";
 import Renderer from "./renderToString";
@@ -22,6 +22,12 @@ import {
   fourthCardComponent,
   cardSolution
 } from "./components/strings";
+
+<Head>
+	<title>💅 Styled Components</title>
+	<link rel="shortcut icon" href="./favicon.ico" />
+	<link rel="icon" href="./favicon.ico" />
+</Head>
 
 # Styled Components
 
@@ -93,10 +99,6 @@ So we have to:
 - Write a lot of `CSS` to account for as many themes as you want
 - Include LESS/SASS in your tool chain
 - Have users reload the page
-
----
-
-<Image src="./assets/linux.jpg" size="50% 50%" />
 
 ---
 
